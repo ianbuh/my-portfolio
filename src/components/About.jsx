@@ -1,33 +1,24 @@
-import React from "react";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" className="mt-16 max-w-4xl mx-auto p-6 glass rounded-lg">
-      <h2 className="text-2xl font-semibold mb-3">About</h2>
-      <p>
-        I build responsive web apps and interactive experiences. I’ve worked with React, Unity, Firebase and I enjoy blending 2D UI with subtle 3D visual effects.
+    <motion.div
+      className="max-w-3xl mx-auto text-center"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true, amount: 0.6 }}
+    >
+      <h2 className="text-3xl font-bold mb-4">About Me</h2>
+      <p className="text-gray-400 leading-relaxed">
+       Recent graduate passionate about web development,
+automation, and data analytics. Skilled in web technologies (PHP,
+Vue.js, C#) and automation tools (Power Automate, PowerApps).
+Currently expanding expertise in Power BI and SQL through selfstudy, with a focus on data visualization, reporting, and database
+management. Eager to contribute technical knowledge and
+problem-solving skills to innovative projects.
+
       </p>
-
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4">
-          <h3 className="font-semibold">Skills</h3>
-          <ul className="mt-2 space-y-1 text-sm">
-            <li>React, JS, Tailwind</li>
-            <li>Three.js / @react-three/fiber</li>
-            <li>Firebase / REST APIs</li>
-          </ul>
-        </div>
-
-        <div className="p-4">
-          <h3 className="font-semibold">Experience</h3>
-          <p className="mt-2 text-sm">Building small web apps and prototypes focused on clarity and performance.</p>
-        </div>
-
-        <div className="p-4">
-          <h3 className="font-semibold">Learning</h3>
-          <p className="mt-2 text-sm">Constantly exploring 3D workflows, performance tuning and accessible UI patterns.</p>
-        </div>
-      </div>
-    </section>
+    </motion.div>
   );
 }

@@ -1,36 +1,46 @@
-import React from "react";
+import { motion } from "framer-motion";
 
-const sampleProjects = [
-  {
-    title: "Interactive Portfolio",
-    desc: "React + Three.js background and responsive content.",
-    link: "#"
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 },
   },
-  {
-    title: "Data Dashboard",
-    desc: "Power BI inspired layout (demo).",
-    link: "#"
-  },
-  {
-    title: "Unity Mini Game",
-    desc: "Mobile-first small puzzle game.",
-    link: "#"
-  }
-];
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function Projects() {
+  const projects = [
+    { title: "BasteKonek", desc: "Multiplayer game built with Unity + Firebase" },
+    { title: "Asset Monitoring", desc: "System for real-time asset tracking" },
+    { title: "Loan Management", desc: "PDF automation with PowerAutomate" },
+  ];
+
   return (
-    <section id="projects" className="mt-12 max-w-5xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-6">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sampleProjects.map((p, i) => (
-          <article key={i} className="p-4 glass rounded-lg hover:scale-[1.01] transition-transform">
-            <h3 className="font-semibold">{p.title}</h3>
-            <p className="mt-2 text-sm">{p.desc}</p>
-            <a className="mt-4 inline-block text-sm underline" href={p.link}>View</a>
-          </article>
+    <motion.div
+      className="max-w-5xl mx-auto text-center"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+    >
+      <h2 className="text-3xl font-bold mb-8">Projects</h2>
+      <div className="grid md:grid-cols-3 gap-6">
+        {projects.map((proj, i) => (
+          <motion.div
+            key={i}
+            variants={item}
+            className="bg-gray-900 border border-gray-700 p-6 rounded-xl hover:shadow-xl transition"
+          >
+            <h3 className="font-semibold text-lg">{proj.title}</h3>
+            <p className="text-gray-400 mt-2">{proj.desc}</p>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.div>
   );
 }

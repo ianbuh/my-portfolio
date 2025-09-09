@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+.bg-animated {
+  background: linear-gradient(270deg, #000000, #111111, #222222);
+  background-size: 600% 600%;
+  animation: gradientMove 20s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
